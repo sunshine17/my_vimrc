@@ -1,0 +1,7 @@
+if ($1 !~ "^(index\.php|images|robots\.txt)"){
+    set $rule_0 1$rule_0;
+}
+if ($rule_0 = "1"){
+    rewrite ^/(.*)$ /index.php/$1 last;
+}
+
