@@ -9,20 +9,33 @@
 " 
 
 "let Tlist_Ctags_Cmd = '/Users/Linzy/local/ctags-5.8/bin/ctags'
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 " For pathogen.vim: auto load all plugins in .vim/bundle
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-source ~/.vim/vundle.vim
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'Yggdroot/LeaderF'
+call vundle#end()            " required
+filetype plugin indent on    " required
+    
+
+"source ~/.vim/vundle.vim
 
 au! Syntax markdown source $HOME/.vim/bundle/vim-markdown/syntax/markdown.vim
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.markdown set filetype=markdown
 
 " Basics 
-    set nocompatible " explicitly get out of vi-compatible mode
+"    set nocompatible " explicitly get out of vi-compatible mode
     set noexrc " don't use local version of .(g)vimrc, .exrc
     set enc=utf-8
 "    set langmenu=none
@@ -61,9 +74,9 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
     set autochdir " always switch to the current file directory
     set backspace=indent,eol,start " make backspace a more flexible
     set nobackup " make backup files
-    set backupdir=~/.vim/backup " where to put backup files
+    set backupdir=~/var/vim/backup " where to put backup files
     set clipboard+=unnamed " share windows clipboard
-    set directory=~/.vim/tmp " directory to place swap files in
+    set directory=~/var/vim/tmp " directory to place swap files in
     set fileformats=unix,dos,mac " support all three, in this order
     set hidden " you can change buffers without saving
     " (XXX: #VIM/tpope warns the line below could break things)
@@ -277,7 +290,7 @@ endif
 " 
 
 " tabline hi
-hi TabLine guifg=none cterm=none
+"hi TabLine guifg=none cterm=none
 hi TabLineSel guibg=blue ctermbg=blue
 hi TabLineFill ctermfg=black
 
@@ -336,4 +349,22 @@ map <C-J> :!php -l % <CR>
 "nnoremap K :Man --manpath=/usr/local/php/lib/php/doc/pman/ <cword> 1<cr>
 "nnoremap K :pman --manpath=/usr/local/php/lib/php/doc/pman/  <cword><cr>
 "nnoremap K :pman   <cword><cr>
+
+" ======= Leadeerf config =======
+"
+" search word under cursor, the pattern is treated as regex, and enter normal mode directly
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+
+" search word under cursor, the pattern is treated as regex,
+" append the result to previous search results.
+noremap <C-G> :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))<CR>
+
+" search word under cursor literally only in current buffer
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
+
+" search visually selected text literally, don't quit LeaderF after accepting an entry
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+
+" recall last search. If the result window is closed, reopen it.
+noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 
