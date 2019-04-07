@@ -15,18 +15,41 @@ call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" ============ Vundle CONFIG ============
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'Yggdroot/LeaderF'
+Plugin 'Valloric/YouCompleteMe'
+
+" Markdown / Writting
+Plugin 'reedes/vim-pencil'
+Plugin 'tpope/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'LanguageTool'
+
+
+" PHP Support
+Plugin 'phpvim/phpcd.vim'
+Plugin 'tobyS/pdv'
+
+
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     
+" ============ END of Vundle CONFIG ============
 
 "source ~/.vim/vundle.vim
 
@@ -168,7 +191,7 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
     set foldenable " Turn on folding
 "    set foldmarker=i{,} " Fold C style code (only use this as default
                         " if you use a high foldlevel)
-    set foldmethod=marker " Fold on the marker
+"    set foldmethod=marker " Fold on the marker
     set foldlevel=100 " Don't autofold anything (but I can still
                       " fold manually)
     set foldopen=block,hor,mark,percent,quickfix,tag " what movements
@@ -217,8 +240,8 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
     map <F12> ggVGg?
 
     " space / shift-space scroll in normal mode
-    noremap <S-space> <C-b>
-    noremap <space> <C-f>
+"    noremap <S-space> <C-b>
+"    noremap <space> <C-f>
 
     " Make Arrow Keys Useful Again 
     "
@@ -350,7 +373,8 @@ map <C-J> :!php -l % <CR>
 "nnoremap K :pman --manpath=/usr/local/php/lib/php/doc/pman/  <cword><cr>
 "nnoremap K :pman   <cword><cr>
 
-" ======= Leadeerf config =======
+
+" ======= Leaderf CONFIG =======
 "
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
@@ -368,3 +392,19 @@ xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#vi
 " recall last search. If the result window is closed, reopen it.
 noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 
+
+"let g:Lf_ShortcutF = '<leader>ff'
+"let g:Lf_ShortcutB = '<leader>fb'
+
+"nnoremap <leader>fm :LeaderfMru<cr>
+"nnoremap <leader>fc :LeaderfFunction<cr>
+"nnoremap <leader>ft :LeaderfTag<cr>
+
+
+let g:Lf_WorkingDirectoryMode = 'Ac'
+
+" ======= END of Leaderf CONFIG =======
+"
+
+map <Space> <Leader>
+"let mapleader=" "
