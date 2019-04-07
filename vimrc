@@ -37,6 +37,12 @@ Plugin 'LanguageTool'
 Plugin 'phpvim/phpcd.vim'
 Plugin 'tobyS/pdv'
 
+" JS Support
+Plugin 'heavenshell/vim-jsdoc.git'
+
+" status bar beautify
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -50,6 +56,11 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     
 " ============ END of Vundle CONFIG ============
+
+
+let g:airline#extensions#tabline#enabled = 1
+
+
 
 "source ~/.vim/vundle.vim
 
@@ -422,3 +433,5 @@ augroup javascript_folding
     au!
     au FileType javascript setlocal foldmethod=syntax
 augroup END
+
+"let snippets_dir = '~/var/vim/snippets/'
