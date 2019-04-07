@@ -408,3 +408,17 @@ let g:Lf_WorkingDirectoryMode = 'Ac'
 
 map <Space> <Leader>
 "let mapleader=" "
+"
+
+
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+
+
+"Enables code folding for javascript based on our syntax file.
+"Please note this can have a dramatic effect on performance.
+
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
