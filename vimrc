@@ -62,7 +62,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 
 
-"source ~/.vim/vundle.vim
+source ~/.vim/vundle.vim
 
 au! Syntax markdown source $HOME/.vim/bundle/vim-markdown/syntax/markdown.vim
 au BufRead,BufNewFile *.md set filetype=markdown
