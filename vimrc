@@ -18,35 +18,6 @@ call pathogen#helptags()
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" ============ Vundle CONFIG ============
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'Yggdroot/LeaderF'
-Plugin 'Valloric/YouCompleteMe'
-
-" Markdown / Writting
-Plugin 'reedes/vim-pencil'
-Plugin 'tpope/vim-markdown'
-Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'LanguageTool'
-
-
-" PHP Support
-Plugin 'phpvim/phpcd.vim'
-Plugin 'tobyS/pdv'
-
-" JS Support
-Plugin 'heavenshell/vim-jsdoc.git'
-
-" status bar beautify
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
