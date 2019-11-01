@@ -11,13 +11,35 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'leafgarland/typescript-vim'
+
+Plugin 'Yggdroot/LeaderF'
+Plugin 'Valloric/YouCompleteMe'
+
+" Markdown / Writting
+Plugin 'reedes/vim-pencil'
+Plugin 'tpope/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'LanguageTool'
+
+
+" PHP Support
+Plugin 'phpvim/phpcd.vim'
+Plugin 'tobyS/pdv'
+
+" JS Support
+Plugin 'heavenshell/vim-jsdoc.git'
+
+" status bar beautify
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'HerringtonDarkholme/yats.vim'
+"Plugin 'tpope/vim-fugitive'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -35,13 +57,10 @@ Plugin 'L9'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
+"Plugin 'godlygeek/tabular'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-
-
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-
 filetype plugin indent on    " required
 
 " To ignore plugin indent changes, instead use:

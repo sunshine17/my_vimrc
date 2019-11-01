@@ -7,46 +7,39 @@
 "   If you find an obvious mistake hit me up at:
 "   http://robertmelton.com/contact (many forms of communication)
 " 
-
-"let Tlist_Ctags_Cmd = '/Users/Linzy/local/ctags-5.8/bin/ctags'
-"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-" For pathogen.vim: auto load all plugins in .vim/bundle
-call pathogen#infect()
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" ============ Vundle CONFIG ============
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Plugin Settings 
+    let b:match_ignorecase = 1 " case is stupid
+    let perl_extended_vars=1 " highlight advanced perl vars
+                              " inside strings
+    " TagList Settings 
+        let Tlist_Auto_Open=0 " let the tag list open automagically
+        let Tlist_Compact_Format = 1 " show small menu
+        let Tlist_Ctags_Cmd = 'ctags' " location of ctags
+        let Tlist_Enable_Fold_Column = 0 " do show folding tree
+        let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill
+                                        " yourself
+        let Tlist_File_Fold_Auto_Close = 1 " fold closed other trees
+        let Tlist_Sort_Type = "name" " order by
+        let Tlist_Use_Right_Window = 1 " split to the right side
+                                        " of the screen
+        let Tlist_WinWidth = 40 " 40 cols wide, so i can (almost always)
+                                 " read my functions
+        " Language Specifics 
+            " just functions and classes please
+            let tlist_aspjscript_settings = 'asp;f:function;c:class' 
+            " just functions and subs please
+            let tlist_aspvbs_settings = 'asp;f:function;s:sub' 
+            " don't show variables in freaking php
+            let tlist_php_settings = 'php;c:class;d:constant;f:function' 
+            " just functions and classes please
+            let tlist_vb_settings = 'asp;f:function;c:class' 
+        " 
+    " 
+" 
 
-Plugin 'Yggdroot/LeaderF'
-Plugin 'Valloric/YouCompleteMe'
-
-" Markdown / Writting
-Plugin 'reedes/vim-pencil'
-Plugin 'tpope/vim-markdown'
-Plugin 'jtratner/vim-flavored-markdown'
-Plugin 'LanguageTool'
-
-
-" PHP Support
-Plugin 'phpvim/phpcd.vim'
-Plugin 'tobyS/pdv'
-
-" JS Support
-Plugin 'heavenshell/vim-jsdoc.git'
-
-" status bar beautify
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+source ~/.vim/vundle.vim
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -57,12 +50,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     
 " ============ END of Vundle CONFIG ============
 
-
 let g:airline#extensions#tabline#enabled = 1
-
-
-
-source ~/.vim/vundle.vim
 
 au! Syntax markdown source $HOME/.vim/bundle/vim-markdown/syntax/markdown.vim
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -80,7 +68,6 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
 
     set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
     set fileencoding=utf-8
-
 
 "    set background=dark " we plan to use a dark background
     color desert
@@ -104,13 +91,13 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
 " 
 
 " General 
-    filetype plugin indent on " load filetype plugins/indent settings
+"    filetype plugin indent on " load filetype plugins/indent settings
     set autochdir " always switch to the current file directory
     set backspace=indent,eol,start " make backspace a more flexible
     set nobackup " make backup files
-    set backupdir=~/var/vim/backup " where to put backup files
+"    set backupdir=~/var/vim/backup " where to put backup files
     set clipboard+=unnamed " share windows clipboard
-    set directory=~/var/vim/tmp " directory to place swap files in
+"    set directory=~/var/vim/tmp " directory to place swap files in
     set fileformats=unix,dos,mac " support all three, in this order
     set hidden " you can change buffers without saving
     " (XXX: #VIM/tpope warns the line below could break things)
@@ -215,36 +202,6 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
                                    " (cleaner than default)
 " 
 
-" Plugin Settings 
-    let b:match_ignorecase = 1 " case is stupid
-    let perl_extended_vars=1 " highlight advanced perl vars
-                              " inside strings
-
-    " TagList Settings 
-        let Tlist_Auto_Open=0 " let the tag list open automagically
-        let Tlist_Compact_Format = 1 " show small menu
-        let Tlist_Ctags_Cmd = 'ctags' " location of ctags
-        let Tlist_Enable_Fold_Column = 0 " do show folding tree
-        let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill
-                                        " yourself
-        let Tlist_File_Fold_Auto_Close = 1 " fold closed other trees
-        let Tlist_Sort_Type = "name" " order by
-        let Tlist_Use_Right_Window = 1 " split to the right side
-                                        " of the screen
-        let Tlist_WinWidth = 40 " 40 cols wide, so i can (almost always)
-                                 " read my functions
-        " Language Specifics 
-            " just functions and classes please
-            let tlist_aspjscript_settings = 'asp;f:function;c:class' 
-            " just functions and subs please
-            let tlist_aspvbs_settings = 'asp;f:function;s:sub' 
-            " don't show variables in freaking php
-            let tlist_php_settings = 'php;c:class;d:constant;f:function' 
-            " just functions and classes please
-            let tlist_vb_settings = 'asp;f:function;c:class' 
-        " 
-    " 
-" 
 
 " Mappings 
     " ROT13 - fun
@@ -330,21 +287,19 @@ hi TabLineFill ctermfg=black
 
 nmap sw :w !sudo tee %
 
-let g:ConqueTerm_ReadUnfocused=1
-let g:ConqueTerm_CWInsert=0
-let g:ConqueTerm_TERM='xterm'
+"let g:ConqueTerm_ReadUnfocused=1
+"let g:ConqueTerm_CWInsert=0
+"let g:ConqueTerm_TERM='xterm'
 
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 
 " tagbar map
-"nmap <F8> :TagbarToggle<CR>
 nmap <right> :TagbarToggle<CR>
 "let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_width = 30
 
 autocmd! bufwritepost .vimrc source ~/.vimrc
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set tags=./.tags,.tags;
 set copyindent
@@ -407,20 +362,17 @@ noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 "let g:Lf_ShortcutF = '<leader>ff'
 "let g:Lf_ShortcutB = '<leader>fb'
 
-"nnoremap <leader>fm :LeaderfMru<cr>
-"nnoremap <leader>fc :LeaderfFunction<cr>
-"nnoremap <leader>ft :LeaderfTag<cr>
-
+nnoremap <leader>fm :LeaderfMru<cr>
+nnoremap <leader>fc :LeaderfFunction<cr>
+nnoremap <leader>ft :LeaderfTag<cr>
 
 let g:Lf_WorkingDirectoryMode = 'Ac'
 
 " ======= END of Leaderf CONFIG =======
-"
 
 map <Space> <Leader>
 "let mapleader=" "
 "
-
 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
