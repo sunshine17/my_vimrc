@@ -11,9 +11,10 @@
 "let Tlist_Ctags_Cmd = '/Users/Linzy/local/ctags-5.8/bin/ctags'
 "let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 " For pathogen.vim: auto load all plugins in .vim/bundle
-call pathogen#infect()
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"
+"call pathogen#infect()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -29,11 +30,11 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " ============ END of Vundle CONFIG ============
 
 
-let g:airline#extensions#tabline#enabled = 1
-
-
-
 source ~/.vim/vundle.vim
+
+set t_Co=256
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline_theme='light'
 
 au! Syntax markdown source $HOME/.vim/bundle/vim-markdown/syntax/markdown.vim
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -313,9 +314,8 @@ nmap <right> :TagbarToggle<CR>
 "let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_width = 30
 
-autocmd! bufwritepost .vimrc source ~/.vimrc
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
+"autocmd! bufwritepost .vimrc source ~/.vimrc
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set tags=./.tags,.tags;
 set copyindent
@@ -378,9 +378,9 @@ noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 "let g:Lf_ShortcutF = '<leader>ff'
 "let g:Lf_ShortcutB = '<leader>fb'
 
-"nnoremap <leader>fm :LeaderfMru<cr>
-"nnoremap <leader>fc :LeaderfFunction<cr>
-"nnoremap <leader>ft :LeaderfTag<cr>
+nnoremap <leader>fm :LeaderfMru<cr>
+nnoremap <leader>fc :LeaderfFunction<cr>
+nnoremap <leader>ft :LeaderfTag<cr>
 
 
 let g:Lf_WorkingDirectoryMode = 'Ac'
