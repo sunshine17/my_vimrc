@@ -9,6 +9,8 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'HerringtonDarkholme/yats.vim'
 
+Plugin 'leafgarland/typescript-vim'
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 
