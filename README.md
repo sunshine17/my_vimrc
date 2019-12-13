@@ -1,7 +1,7 @@
 
 # 1. Setup Vundle
 
-Although vim8.x+ has plugin manaegemet feature, I still like to use vundle to manage all the plugins, so we have to setup vundle first: 
+Although vim8.x+ has plugin management feature, I still like to use vundle to manage all the plugins, so we have to setup vundle first: 
 
 ```sh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
