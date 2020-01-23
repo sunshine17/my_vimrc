@@ -4,6 +4,11 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Plugin for vue
+Plugin 'posva/vim-vue'
+
+Plugin 'scrooloose/syntastic'
+
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
