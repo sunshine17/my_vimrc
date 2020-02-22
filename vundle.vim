@@ -4,6 +4,14 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'ternjs/tern_for_vim'
+Plugin 'isRuslan/vim-es6'
+
+" Use jsctags instead of ctags to generate tags for javascript files
+let g:tagbar_type_javascript = {
+  \ 'ctagsbin' : 'jsctags'
+\ }
+
 " Plugin for vue
 Plugin 'posva/vim-vue'
 
