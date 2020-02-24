@@ -20,6 +20,22 @@ if exists('$TMUX')
   set term=screen-256color
 endif
 
+" eslint
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+
+" ==== 系统剪切板复制粘贴 ====
+" v 模式下复制内容到系统剪切板
+vmap <Leader>c "+yy
+" n 模式下复制一行到系统剪切板
+nmap <Leader>c "+yy
+" n 模式下粘贴系统剪切板的内容
+nmap <Leader>v "+p
+
 " ctags configs
 let g:tagbar_type_typescript = {
   \ 'ctagstype': 'typescript',

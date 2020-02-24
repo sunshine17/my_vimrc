@@ -4,6 +4,8 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'dense-analysis/ale'
+
 Plugin 'ternjs/tern_for_vim'
 Plugin 'isRuslan/vim-es6'
 
@@ -15,7 +17,6 @@ let g:tagbar_type_javascript = {
 " Plugin for vue
 Plugin 'posva/vim-vue'
 
-Plugin 'scrooloose/syntastic'
 
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
