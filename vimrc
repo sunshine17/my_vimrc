@@ -430,6 +430,9 @@ map <C-J> :!php -l % <CR>
 
 " ======= Leaderf CONFIG =======
 "
+" enable the popup mode
+let g:Lf_WindowPosition = 'popup'
+
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 
