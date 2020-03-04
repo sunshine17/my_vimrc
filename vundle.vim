@@ -4,6 +4,9 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Install jsctags
+" npm install -g git+https://github.com/ramitos/jsctags.git
+
 Plugin 'dense-analysis/ale'
 
 Plugin 'ternjs/tern_for_vim'
