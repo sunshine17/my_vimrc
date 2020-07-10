@@ -27,9 +27,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     
-" ============ END of Vundle CONFIG ============
-
-
 source ~/.vim/vundle.vim
 
 set t_Co=256
