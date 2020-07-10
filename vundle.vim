@@ -32,6 +32,8 @@ Plugin 'tobyS/pdv'
 
 " JS Support
 Plugin 'heavenshell/vim-jsdoc.git'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'posva/vim-vue'
 
 " status bar beautify
 Plugin 'vim-airline/vim-airline'
