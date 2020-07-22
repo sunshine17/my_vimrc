@@ -17,16 +17,12 @@ let g:tagbar_type_javascript = {
   \ 'ctagsbin' : 'jsctags'
 \ }
 
-" Plugin for vue
-Plugin 'posva/vim-vue'
-
 
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'HerringtonDarkholme/yats.vim'
 
-Plugin 'leafgarland/typescript-vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
