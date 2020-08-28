@@ -89,6 +89,9 @@ au BufNewFile,BufRead *.html,*.js,*.vue set shiftwidth=2
 au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
 au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
 au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
+"au BufNewFile,BufRead *.html,*.js,*.vue set expandtab " no real tabs please!
+
+    
 
 let g:syntastic_javascript_checkers = ['eslint']
 
@@ -490,4 +493,12 @@ augroup javascript_folding
     au FileType javascript setlocal foldmethod=syntax
 augroup END
 
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\}
+
 "let snippets_dir = '~/var/vim/snippets/'
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete

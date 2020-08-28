@@ -4,6 +4,11 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Java config
+"
+" Code complete plugin
+Plugin 'artur-shaik/vim-javacomplete2'
+
 " Install jsctags
 " npm install -g git+https://github.com/ramitos/jsctags.git
 
