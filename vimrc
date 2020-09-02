@@ -502,3 +502,7 @@ let g:ale_fixers = {
 "let snippets_dir = '~/var/vim/snippets/'
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" Java language server config
+" Mac config
+let g:lsc_server_commands = {'java': '/usr/local/java-language-server/dist/lang_server_mac.sh'}

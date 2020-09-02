@@ -4,6 +4,10 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Language Server Client
+Plugin 'natebosch/vim-lsc'
+
+
 " Java config
 "
 " Code complete plugin
