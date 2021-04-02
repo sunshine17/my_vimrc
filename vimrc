@@ -16,7 +16,7 @@
 "call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags()
 
-if exists('$TMUX')
+if exists('$TMUX') && !has('nvim')
   set term=screen-256color
 endif
 
@@ -503,6 +503,36 @@ let g:ale_fixers = {
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
+" 
 " Java language server config
 " Mac config
+"
 let g:lsc_server_commands = {'java': '/usr/local/java-language-server/dist/lang_server_mac.sh'}
+"let g:lsc_server_commands = {'java': '/usr/local/java-language-server/dist/lang_server_mac.sh & > /Users/pconline/var/logs/jls.log'}
+
+" Use all the defaults (recommended):
+let g:lsc_auto_map = v:true
+
+" Apply the defaults with a few overrides:
+let g:lsc_auto_map = {'defaults': v:true, 'FindReferences': '<leader>r'}
+
+" Setting a value to a blank string leaves that command unmapped:
+let g:lsc_auto_map = {'defaults': v:true, 'FindImplementations': ''}
+
+" ... or set only the commands you want mapped without defaults.
+" Complete default mappings are:
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': '<C-]>',
+    \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>'],
+    \ 'FindReferences': 'gr',
+    \ 'NextReference': '<C-n>',
+    \ 'PreviousReference': '<C-p>',
+    \ 'FindImplementations': 'gI',
+    \ 'FindCodeActions': 'ga',
+    \ 'Rename': 'gR',
+    \ 'ShowHover': v:true,
+    \ 'DocumentSymbol': 'go',
+    \ 'WorkspaceSymbol': 'gS',
+    \ 'SignatureHelp': 'gm',
+    \ 'Completion': 'completefunc',
+    \}
