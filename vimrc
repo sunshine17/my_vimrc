@@ -83,7 +83,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " vue config
-au BufNewFile,BufRead *.html,*.js,*.vue set tabstop=2
+au BufNewFile,BufRead *.html,*.js,*.vue,*.yaml set tabstop=2
 au BufNewFile,BufRead *.html,*.js,*.vue set softtabstop=2
 au BufNewFile,BufRead *.html,*.js,*.vue set shiftwidth=2
 au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
@@ -234,11 +234,11 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
 "    set nowrap " do not wrap line
     set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
     set smartcase " if there are caps, go case-sensitive
-    set shiftwidth=4 " auto-indent amount when using cindent,
+    set shiftwidth=2 " auto-indent amount when using cindent,
                       " >>, << and stuff like that
-    set softtabstop=4 " when hitting tab or backspace, how many spaces
+    set softtabstop=2 " when hitting tab or backspace, how many spaces
                        "should a tab be (see expandtab)
-    set tabstop=4 " real tabs should be 8, and they will show with
+    set tabstop=2 " real tabs should be 8, and they will show with
                    " set list on
 " 
 
@@ -337,6 +337,8 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
         au BufRead,BufNewFile *.notes set guifont=Consolas:h12
         au BufRead,BufNewFile *.notes set spell
     " 
+    " 
+    "
     au BufNewFile,BufRead *.ahk setf ahk 
 " 
 
@@ -506,3 +508,17 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " Java language server config
 " Mac config
 let g:lsc_server_commands = {'java': '/usr/local/java-language-server/dist/lang_server_mac.sh'}
+
+" === YAML file settings
+" You need to install linting tool first
+"brew install yamllint
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+set foldlevelstart=20
+
+let g:indentLine_char = '⦙'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'never'
+
+
