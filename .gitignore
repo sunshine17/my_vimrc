@@ -1,3 +1,6 @@
 .hg/*
 .bundle/*
 bundle/*
+backup/*
+.netrwhist
+tmp/*
