@@ -36,3 +36,6 @@ let b:undo_ftplugin = "setl fo< ofu< com< cms<"
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
+
+" Fix files with prettier, and then ESLint.
+let b:ale_fixers = ['prettier', 'eslint']

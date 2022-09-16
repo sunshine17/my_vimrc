@@ -83,12 +83,15 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " vue config
-au BufNewFile,BufRead *.html,*.js,*.vue set tabstop=2
+au BufNewFile,BufRead *.html,*.js,*.vue,*.yaml set tabstop=2
 au BufNewFile,BufRead *.html,*.js,*.vue set softtabstop=2
 au BufNewFile,BufRead *.html,*.js,*.vue set shiftwidth=2
 au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
 au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
 au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
+"au BufNewFile,BufRead *.html,*.js,*.vue set expandtab " no real tabs please!
+
+    
 
 let g:syntastic_javascript_checkers = ['eslint']
 
@@ -99,9 +102,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     
-" ============ END of Vundle CONFIG ============
-
-
 source ~/.vim/vundle.vim
 
 set t_Co=256
@@ -234,11 +234,11 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
 "    set nowrap " do not wrap line
     set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
     set smartcase " if there are caps, go case-sensitive
-    set shiftwidth=4 " auto-indent amount when using cindent,
+    set shiftwidth=2 " auto-indent amount when using cindent,
                       " >>, << and stuff like that
-    set softtabstop=4 " when hitting tab or backspace, how many spaces
+    set softtabstop=2 " when hitting tab or backspace, how many spaces
                        "should a tab be (see expandtab)
-    set tabstop=4 " real tabs should be 8, and they will show with
+    set tabstop=2 " real tabs should be 8, and they will show with
                    " set list on
 " 
 
@@ -337,6 +337,8 @@ au BufRead,BufNewFile *.markdown set filetype=markdown
         au BufRead,BufNewFile *.notes set guifont=Consolas:h12
         au BufRead,BufNewFile *.notes set spell
     " 
+    " 
+    "
     au BufNewFile,BufRead *.ahk setf ahk 
 " 
 
@@ -432,19 +434,21 @@ map <C-J> :!php -l % <CR>
 "
 " enable the popup mode
 let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
 
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
-noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf rg -e %s ", expand("<cword>"))<CR><CR>
+"noremap <leader>fk :<C-U><C-R>=printf("Leaderf rg %s", "")<CR><CR>
 
 " search word under cursor, the pattern is treated as regex,
 " append the result to previous search results.
-noremap <C-G> :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))<CR>
+noremap <C-G> :<C-U><C-R>=printf("Leaderf rg --append -e %s ", expand("<cword>"))<CR><CR>
 
 " search word under cursor literally only in current buffer
-noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-B> :<C-U><C-R>=printf("Leaderf rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
 
 " search visually selected text literally, don't quit LeaderF after accepting an entry
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+xnoremap gf :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
 
 " recall last search. If the result window is closed, reopen it.
 noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
@@ -456,9 +460,20 @@ noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 nnoremap <leader>fm :LeaderfMru<cr>
 nnoremap <leader>fc :LeaderfFunction<cr>
 nnoremap <leader>ft :LeaderfTag<cr>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <leader>fk :<C-U><C-R>=printf("Leaderf rg %s", "")<CR><CR>
 
 
 let g:Lf_WorkingDirectoryMode = 'Ac'
+
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 " ======= END of Leaderf CONFIG =======
 "
@@ -480,4 +495,30 @@ augroup javascript_folding
     au FileType javascript setlocal foldmethod=syntax
 augroup END
 
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\}
+
 "let snippets_dir = '~/var/vim/snippets/'
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" Java language server config
+" Mac config
+let g:lsc_server_commands = {'java': '/usr/local/java-language-server/dist/lang_server_mac.sh'}
+
+" === YAML file settings
+" You need to install linting tool first
+"brew install yamllint
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+set foldlevelstart=20
+
+let g:indentLine_char = '⦙'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'never'
+
+

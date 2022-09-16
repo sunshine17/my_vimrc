@@ -4,6 +4,15 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Language Server Client
+Plugin 'natebosch/vim-lsc'
+
+
+" Java config
+"
+" Code complete plugin
+Plugin 'artur-shaik/vim-javacomplete2'
+
 " Install jsctags
 " npm install -g git+https://github.com/ramitos/jsctags.git
 
@@ -17,16 +26,12 @@ let g:tagbar_type_javascript = {
   \ 'ctagsbin' : 'jsctags'
 \ }
 
-" Plugin for vue
-Plugin 'posva/vim-vue'
-
 
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'HerringtonDarkholme/yats.vim'
 
-Plugin 'leafgarland/typescript-vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -51,10 +56,16 @@ Plugin 'tobyS/pdv'
 
 " JS Support
 Plugin 'heavenshell/vim-jsdoc.git'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'posva/vim-vue'
 
 " status bar beautify
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'pedrohdz/vim-yaml-folds'
+Plugin 'stephpy/vim-yaml'
+Plugin 'Yggdroot/indentLine'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
