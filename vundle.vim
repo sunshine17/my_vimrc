@@ -63,6 +63,10 @@ Plugin 'posva/vim-vue'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'pedrohdz/vim-yaml-folds'
+Plugin 'stephpy/vim-yaml'
+Plugin 'Yggdroot/indentLine'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
