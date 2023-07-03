@@ -27,6 +27,9 @@ let g:tagbar_type_javascript = {
 \ }
 
 
+" Auto gen ctags file
+Plugin 'ludovicchabant/vim-gutentags.git'
+
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
@@ -51,7 +54,7 @@ Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'LanguageTool'
 
 " PHP Support
-Plugin 'phpvim/phpcd.vim'
+"Plugin 'phpvim/phpcd.vim'
 Plugin 'tobyS/pdv'
 
 " JS Support
