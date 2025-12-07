@@ -18,7 +18,7 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'dense-analysis/ale'
 
-Plugin 'ternjs/tern_for_vim'
+"Plugin 'ternjs/tern_for_vim'
 Plugin 'isRuslan/vim-es6'
 
 " Use jsctags instead of ctags to generate tags for javascript files
@@ -40,7 +40,7 @@ Plugin 'L9'
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'Yggdroot/LeaderF'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'godlygeek/tabular'
 
