@@ -4,3 +4,4 @@ bundle/*
 backup/*
 .netrwhist
 tmp/*
+.DS_Store
