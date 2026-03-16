@@ -18,7 +18,7 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 Plugin 'dense-analysis/ale'
 
-Plugin 'ternjs/tern_for_vim'
+"Plugin 'ternjs/tern_for_vim'
 Plugin 'isRuslan/vim-es6'
 
 " Use jsctags instead of ctags to generate tags for javascript files
@@ -48,6 +48,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'reedes/vim-pencil'
 Plugin 'tpope/vim-markdown'
 Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'LanguageTool'
 
 " PHP Support
