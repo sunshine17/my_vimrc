@@ -8,6 +8,9 @@
 "   http://robertmelton.com/contact (many forms of communication)
 " 
 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
 "let Tlist_Ctags_Cmd = '/Users/Linzy/local/ctags-5.8/bin/ctags'
 "let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 "let g:Tlist_Ctags_Cmd='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
@@ -81,9 +84,6 @@ let g:tagbar_type_markdown = {
 \ }
 
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 " vue config
 au BufNewFile,BufRead *.html,*.js,*.vue,*.yaml set tabstop=2
 au BufNewFile,BufRead *.html,*.js,*.vue set softtabstop=2
@@ -92,8 +92,6 @@ au BufNewFile,BufRead *.html,*.js,*.vue set expandtab
 au BufNewFile,BufRead *.html,*.js,*.vue set autoindent
 au BufNewFile,BufRead *.html,*.js,*.vue set fileformat=unix
 "au BufNewFile,BufRead *.html,*.js,*.vue set expandtab " no real tabs please!
-
-    
 
 let g:syntastic_javascript_checkers = ['eslint']
 
@@ -113,6 +111,15 @@ let g:airline#extensions#tabline#enabled = 1
 au! Syntax markdown source $HOME/.vim/bundle/vim-markdown/syntax/markdown.vim
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.markdown set filetype=markdown
+
+" markdown-preview.nvim
+" Keep preview manual so it doesn't pop open unexpectedly.
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_filetypes = ['markdown']
+
+" Open/close preview with a buffer-local mapping in Markdown files.
+autocmd FileType markdown nnoremap <buffer> <leader>mp :MarkdownPreviewToggle<CR>
 
 " Basics 
 "    set nocompatible " explicitly get out of vi-compatible mode
@@ -522,5 +529,3 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 let g:ale_lint_on_text_changed = 'never'
-
-
