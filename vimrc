@@ -11,12 +11,12 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-"let Tlist_Ctags_Cmd = '/Users/Linzy/local/ctags-5.8/bin/ctags'
-"let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-"let g:Tlist_Ctags_Cmd='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
-"let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
+" ctags config
+let g:gutentags_ctags_executable = 'ctags'
+let g:tagbar_ctags_bin = 'ctags'
+let g:Tlist_Ctags_Cmd = 'ctags'
+
 " For pathogen.vim: auto load all plugins in .vim/bundle
-"
 "call pathogen#infect()
 "call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags()
